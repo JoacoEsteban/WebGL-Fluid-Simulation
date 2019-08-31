@@ -33,10 +33,10 @@ let config = {
     CAPTURE_RESOLUTION: 512,
     DENSITY_DISSIPATION: 1,
     VELOCITY_DISSIPATION: 0.2,
-    PRESSURE: 0.8,
+    PRESSURE: 0,
     PRESSURE_ITERATIONS: 20,
-    CURL: 30,
-    SPLAT_RADIUS: 0.25,
+    CURL: 0,
+    SPLAT_RADIUS: 0.1,
     SPLAT_FORCE: 6000,
     SHADING: true,
     COLORFUL: true,
@@ -1419,7 +1419,7 @@ function correctRadius (radius) {
     return radius;
 }
 
-canvas.addEventListener('mousedown', e => {
+canvas.addEventListener('mouseenter', e => {
     let posX = scaleByPixelRatio(e.offsetX);
     let posY = scaleByPixelRatio(e.offsetY);
     let pointer = pointers.find(p => p.id == -1);
@@ -1436,9 +1436,9 @@ canvas.addEventListener('mousemove', e => {
     updatePointerMoveData(pointer, posX, posY);
 });
 
-window.addEventListener('mouseup', () => {
-    updatePointerUpData(pointers[0]);
-});
+// window.addEventListener('mouseup', () => {
+//     updatePointerUpData(pointers[0]);
+// });
 
 canvas.addEventListener('touchstart', e => {
     e.preventDefault();
