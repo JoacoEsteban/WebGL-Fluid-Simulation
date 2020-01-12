@@ -1480,6 +1480,13 @@ window.addEventListener('keydown', e => {
     if (e.key === ' ')
         splatStack.push(parseInt(Math.random() * 20) + 5);
 });
+function randomSplatInterval (ms) {
+    splatStack.push(Math.random() * 10);
+    setTimeout(() => {
+        randomSplatInterval((Math.random() * 10) % 2 * 1000)
+    }, ms);
+}
+randomSplatInterval(0)
 
 function updatePointerDownData (pointer, id, posX, posY) {
     pointer.id = id;
