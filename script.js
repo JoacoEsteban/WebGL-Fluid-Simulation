@@ -1481,10 +1481,11 @@ window.addEventListener('keydown', e => {
         splatStack.push(parseInt(Math.random() * 20) + 5);
 });
 function randomSplatInterval (ms) {
-    splatStack.push(Math.random() * 10);
     setTimeout(() => {
         randomSplatInterval((Math.random() * 10) % 2 * 1000)
     }, ms);
+    if (document.hidden) return console.log('not focused')
+    splatStack.push(Math.random() * 10);
 }
 randomSplatInterval(0)
 
