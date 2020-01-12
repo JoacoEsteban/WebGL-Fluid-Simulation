@@ -1436,6 +1436,17 @@ canvas.addEventListener('mousemove', e => {
     updatePointerMoveData(pointer, posX, posY);
 });
 
+let blurAmmount = JSON.parse(localStorage.getItem('blurAmmount')) || 0
+canvas.addEventListener('wheel', (e) => {
+    blurAmmount = e.deltaY < 0 ? (blurAmmount === 20 ? 20 : ++blurAmmount) : (blurAmmount === 0 ? 0 : --blurAmmount)
+    localStorage.setItem('blurAmmount', blurAmmount)
+    setBlur()
+});
+
+function setBlur () {
+    document.body.style.filter = 'blur('+blurAmmount+'px)'
+}
+setBlur()
 // window.addEventListener('mouseup', () => {
 //     updatePointerUpData(pointers[0]);
 // });
